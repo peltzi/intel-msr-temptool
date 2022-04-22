@@ -45,13 +45,13 @@ pub(crate) fn extract_value(data: u64, high: u64, low: u64) -> u64 {
 }
 
 pub(crate) fn clear_and_set(data: &mut u64, high: u64, low: u64, value: u64) {
-    // Get our bitfield size
+    // Get our bitfield size based in high and low indexes
     let bits = high - low + 1;
 
     // Calculate clear mask, clear our size amount of bits at starting index
     let clear_mask = !(((1u64 << bits) - 1) << low);
 
-    // Clear bitfield in current value
+    // Clear our bitfield in current value
     *data &= clear_mask;
 
     // Set new value to our bitfield
